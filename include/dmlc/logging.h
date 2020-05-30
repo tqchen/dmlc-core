@@ -187,9 +187,9 @@ DEFINE_CHECK_FUNC(_NE, !=)
 #pragma GCC diagnostic pop
 
 #define CHECK_BINARY_OP(name, op, x, y)                  \
-  if (!(dmlc::LogCheck##name(x, y)))                     \
+  if (!(dmlc::LogCheck##name((x), (y))))                 \
       dmlc::LogMessageFatal(__FILE__, __LINE__).stream() \
-        << "Check failed: " << #x " " #op " " #y << " (" << x << " vs. " << y << ") " << ": " /* CHECK_XX(x, y) requires x and y can be serialized to string. Use CHECK(x OP y) otherwise. NOLINT(*) */
+         << "Check failed: " << #x " " #op " " #y << " (" << (x) << " vs. " << (y) << ") " << ": " /* CHECK_XX(x, y) requires x and y can be serialized to string. Use CHECK(x OP y) otherwise. NOLINT(*) */
 
 // Always-on checking
 #define CHECK(x)                                           \

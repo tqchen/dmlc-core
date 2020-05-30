@@ -22,7 +22,7 @@ TEST(Logging, signed_compare) {
   int32_t x = 1;
   uint32_t y = 2;
   CHECK_GT(y, x);
-
+  CHECK_EQ(x & 1, 1);
   EXPECT_THROW(CHECK_EQ(x, y), dmlc::Error);
 }
 
